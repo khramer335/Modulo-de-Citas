@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Citas</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Styles\NavStyle.css">
+        
+        <script src="CitasJS.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <nav class="navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Home.html">Citas Hospital Civil</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Home.html">Inicio</a></li>
+                        <li class="active" ><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Citas.html">Citas</a></li>
+                        <li><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Doctores.html">Medicos</a></li>
+                        <li><a href="#">Reporte</a></li>
+                        <li><a href="#">Nuevo Usuario</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <br>
+                    <img src="patient.png" alt="patient icon" width="50%" height="10%">
+                    
+                    <h1><a href="Patient.html">Paciente</a></h1>
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="Cita 1.html">Cita 1</a></li>
+                        <li><a href="Cita 2.html">Cita 2</a></li>
+                        <li><a href="Cita 3.html">Cita 3</a></li>
+                    </ul><br>
+                </div>
+                
+                <div class="col-sm-9 form">
+                    <h1>Nombre del Paciente</h1>
+                    <h2>(834)XXX-XXXX</h2>
+                    <h3>ID: x</h3>
+                    <hr>
+                    <h5>Dependencia</h5>
+                    <button type="button" onclick="window.location.href='EjemploExpedienteM.pdf'">Expediente</button>
+                </div>
+            </div>
+        </div>
+
+        <footer name="footer" class="container-fluid text-center">
+            <p>Modulo de Citas - 2021
+                <br>Version Pre-alpha
+                <br>Cualquier problema con este software favor de reportar a el departamento de Sistemas del Hospital Civil.
+            </p>
+        </footer>
+    </body>
+    
+</html>
