@@ -1,0 +1,175 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<title>Citas</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Styles\NavStyle.css">
+
+        <script src="CitasJS.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	
+	<body>
+		<nav class="navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Home.html">Citas Hospital Civil</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Home.html">Inicio</a></li>
+                        <li class="active" ><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Citas.html">Citas</a></li>
+                        <li><a href="C:\Users\IdeaPad\Desktop\Servicio Social\WEB\Main\Doctores.html">Medicos</a></li>
+                        <li><a href="#">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+		<div class="container form">
+			<form method="POST" action="/path/to/server">
+				<fieldset>
+					<legend>Nueva Cita</legend>
+					<div>
+						<label for="name">Paciente:</label>
+						<input type="text" name="name" id="name">
+					</div>
+					
+					<br>
+					
+					<div>
+						<label for="doctor">Medico:</label>
+						<select id="doctor" name="doctor">
+							<optgroup label="Medico General">
+								<option>Dr. Daniel Duran Perales</option>
+							</optgroup>
+							
+							<optgroup label="Cirujano">
+								<option>Dr. Christian Gray</option>
+							</optgroup>
+							
+							<optgroup label="Patologia">
+								<option>Dr. Gregory House</option>
+							</optgroup>
+						</select>
+					</div>
+					
+					<br>
+
+					<div>
+						<label for="date">Fecha:</label>
+						<input type="date" name="date" id="date">
+						<label for="time">Hora:</label>
+						<input type="time" name="time" id="time">
+					</div>
+
+					<br>
+
+					<div>
+						<label for="dependencia">Dependencia:</label>
+						<select name="dependencia" id="dep">
+							<option value="1">Dependencia 1</option>
+							<option value="2">Dependencia 2</option>
+							<option value="3">Dependencia 3</option>
+						</select>
+					</div>
+					
+					<br>
+
+					<div>
+						<button type="button">Agendar Cita</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		
+		
+		<script src="../js/jquery.js"></script>
+		<script src="../js/jquery-ui.js"></script>
+		<script src="../js/i18n/datepicker-es.js"></script>
+		<script src="no-php-error.js"></script>
+		
+		<script>
+		$( "#buttonset" ).buttonset();
+		$( "[name='language']" ).on( "change", function() {
+			$( "#date" )
+			.datepicker( "option", $.datepicker.regional[ this.value ] );
+		});
+		
+		$( "#doctor" ).selectmenu();
+		$( "#insurance" ).autocomplete({
+			minLength: 2,
+			source: "search.php"
+		});
+		
+		function checkDate( date ) {
+			var isWeekday = date.getDay() > 0 && date.getDay() < 6;
+			if ( $( "#doctor" ).val() === "Smith" ) {
+				return [ isWeekday && date.getDay() != 2 ];
+			} else {
+				return [ isWeekday ];
+			}
+		};
+		
+		$( "#date" ).datepicker({
+			beforeShowDay: checkDate
+		}).datepicker( "option", $.datepicker.regional[ "" ] );
+
+		$( "button" ).button({
+		icons: {
+			primary: "ui-icon-calendar"
+		}
+	});
+	
+	$( "#days" ).spinner({ min: 1 });
+	
+	$( "form" ).on( "submit", function( event ) {
+		var date,
+		
+		daysValid = $( "#days" ).spinner( "isValid" );
+		
+		try {
+			date = $.datepicker.parseDate( "mm/dd/yy",
+			$( "#date" ).val() );
+		} catch ( error ) { }
+		
+		if ( !date ) {
+			event.preventDefault();
+			alert( "Please provide a valid date." );
+		}
+		if ( date && !checkDate( date )[ 0 ] ) {
+			event.preventDefault();
+			alert( "You cannot select a weekend or Tuesday for Doctor Smith." );
+		}
+		if ( !daysValid ) {
+			event.preventDefault();
+			alert( "Please provide a valid number of days." );
+		}
+		});
+		
+		</script>
+		
+		<footer name="footer" class="container-fluid text-center">
+			<p>Modulo de Citas - 2021
+				<br>Version Pre-alpha
+				<br>Cualquier problema con este software favor de reportar a el departamento de Sistemas del Hospital Civil.
+			</p>
+		</footer>
+	</body>
+</html>
